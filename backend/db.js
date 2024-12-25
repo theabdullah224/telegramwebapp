@@ -1,12 +1,16 @@
 const { Pool } = require('pg');
 require('dotenv').config();
+// const pool = new Pool({
+//     user: process.env.DB_USER,
+//     host: process.env.DB_HOST,
+//     database: process.env.DB_NAME, 
+//     password: process.env.DB_PASSWORD, 
+//     port: process.env.DB_PORT,
+//   });
 const pool = new Pool({
-    user: process.env.DB_USER,
-    host: process.env.DB_HOST,
-    database: process.env.DB_NAME, 
-    password: process.env.DB_PASSWORD, 
-    port: process.env.DB_PORT,
-  });
+  connectionString: "postgresql://lcosik:xau_HfIi7jDcwLzvZUqvvnyv6VJaKSqDTXMu3@us-east-1.sql.xata.sh/mydb:main?sslmode=require",
+});
+
 
 async function initializeDatabase() {
   const client = await pool.connect();
